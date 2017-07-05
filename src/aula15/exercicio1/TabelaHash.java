@@ -5,7 +5,7 @@ package aula15.exercicio1;
  */
 public class TabelaHash {
     private static final int LIMITE = 25;
-    private ListaSED tabela;
+    private ListaSED tabela[] = new ListaSED[LIMITE];
 
 
     public void inserir(int valor) {

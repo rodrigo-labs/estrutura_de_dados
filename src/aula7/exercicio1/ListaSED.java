@@ -10,7 +10,7 @@ public class ListaSED {
     private int totalDeElementos;
 
 
-    public void inserirNoInicio(Aluno aluno) {
+    private void inserirNoInicio(Aluno aluno) {
         No novoNo = new No(aluno, inicio);
         inicio = novoNo;
 
