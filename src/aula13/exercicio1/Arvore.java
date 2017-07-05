@@ -12,29 +12,7 @@ public class Arvore {
         No novoNo = new No();
         novoNo.setValor(valor);
 
-        incluirSemRetorno(raiz, novoNo);
-    }
-
-    private void incluirSemRetorno(No noAtual, No novoNo) {
-        if (raiz == null) {
-            raiz = novoNo;
-        }
-
-        if (noAtual != null) {
-            if (novoNo.getValor() < noAtual.getValor()) {
-                if (noAtual.getEsquerda() == null) {
-                    noAtual.setEsquerda(novoNo);
-                }
-
-                incluirSemRetorno(noAtual.getEsquerda(), novoNo);
-            } else if (novoNo.getValor() > noAtual.getValor()) {
-                if (noAtual.getDireita() == null) {
-                    noAtual.setDireita(novoNo);
-                }
-
-                incluirSemRetorno(noAtual.getDireita(), novoNo);
-            }
-        }
+        incluir(raiz, novoNo);
     }
 
     private No incluir(No noAtual, No novoNo) {
