@@ -11,63 +11,54 @@ public class ListaSED {
 
 
     public void inserir(int valor) {
-        if (inicio == null) {
-            inserirNoInicio(valor);
-        } else {
-            No novoNo = new No(null, valor);
+        No novoNo = new No(null, valor);
 
+        if (descritor == 0) {
+            inicio = fim = novoNo;
+        } else {
             fim.setProximo(novoNo);
             fim = novoNo;
-            descritor++;
-        }
-    }
-
-    private void inserirNoInicio(int valor) {
-        No novoNo = new No(inicio, valor);
-        inicio = novoNo;
-
-        if (inicio == null) {
-            fim = inicio;
         }
 
         descritor++;
     }
 
-    public void romover(int valor) {
-        int indice = localizar(valor);
-        remover(valor, indice);
-    }
-
-    private void remover(int valor, int indice) {
+    public void remover(int valor) {
         No noAtual = inicio;
         No noAnterior = null;
         No noProximo = null;
 
-        if (inicio == null) {
+        if (descritor == 0) {
             throw new IllegalArgumentException("Lista vazia");
-        } else if (indice == 0) {
+        } else if (inicio.getValor() == valor) {
             inicio = inicio.getProximo();
             descritor--;
-
-            if (descritor == 0) {
-                fim = null;
-            }
-        } else if (inicio.getProximo() == null) {
-            inicio = null;
-        } else {
-            for (int i = 0; i < indice; i++) {
-                noAnterior = noAtual;
+        } else if (fim.getValor() == valor) {
+            while (noAtual.getProximo() != null) {
                 noAtual = noAtual.getProximo();
             }
 
-            noProximo = noAtual.getProximo();
-            noAnterior.setProximo(noProximo);
-            noAtual = null;
+            noAtual.setProximo(null);
+            descritor--;
+        } else if (descritor == 1) {
+            inicio = fim = null;
+            descritor--;
+        } else {
+            for (int i = 0; i < descritor; i++) {
+                if (noAtual.getValor() == valor) {
+                    noProximo = noAtual.getProximo();
+                    noAnterior.setProximo(noProximo);
+                    noAtual = null;
+                }
+
+                noAnterior = noAtual;
+                noAtual = noAtual.getProximo();
+            }
         }
     }
 
-    public int localizar(int valor) {
-        return valor;
+    public boolean localizar(int valor) {
+        return false;
     }
 
     @Override
