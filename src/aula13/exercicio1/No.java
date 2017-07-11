@@ -8,14 +8,6 @@ public class No {
     private No esquerda;
     private No direita;
 
-    public No() {
-    }
-
-    public No(int valor, No esquerda, No direita) {
-        this.valor = valor;
-        this.esquerda = esquerda;
-        this.direita = direita;
-    }
 
     public int getValor() {
         return valor;
